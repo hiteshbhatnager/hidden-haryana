@@ -473,3 +473,4 @@ export const seedDestinations = [
     reviewsCount: 27
   }
 ];
+

@@ -84,3 +84,4 @@ export const uploadImage = asyncHandler(async (req, res) => {
     )
   );
 });
+

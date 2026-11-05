@@ -19,3 +19,4 @@ router.post('/logout', logoutUser);
 router.get('/me', protect, getCurrentUser);
 
 export default router;
+

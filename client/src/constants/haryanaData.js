@@ -73,3 +73,4 @@ export const DESTINATION_CATEGORIES = [
     count: '10+ retreats',
   },
 ];
+

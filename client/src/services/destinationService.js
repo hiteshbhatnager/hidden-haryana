@@ -55,3 +55,4 @@ export const destinationService = {
     return res.data;
   },
 };
+

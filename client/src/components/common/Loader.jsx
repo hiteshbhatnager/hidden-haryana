@@ -14,3 +14,4 @@ export const Loader = ({ message = 'Loading Haryana treasures...', className = '
     </div>
   );
 };
+

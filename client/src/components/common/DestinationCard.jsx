@@ -95,3 +95,4 @@ export const DestinationCard = ({ destination, variant = 'default' }) => {
     </div>
   );
 };
+

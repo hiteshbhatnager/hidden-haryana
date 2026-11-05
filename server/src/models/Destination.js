@@ -191,3 +191,4 @@ destinationSchema.index({
 });
 
 export const Destination = mongoose.model('Destination', destinationSchema);
+

@@ -8,3 +8,4 @@ const router = Router();
 router.post('/', protect, upload.single('image'), uploadImage);
 
 export default router;
+

@@ -44,3 +44,4 @@ export const AppRoutes = () => {
     </div>
   );
 };
+

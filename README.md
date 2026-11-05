@@ -153,3 +153,4 @@ Verify the frontend production bundle:
 npm --prefix client run build
 ```
 *(Production build succeeds with 0 errors and creates optimized gzip assets).*
+

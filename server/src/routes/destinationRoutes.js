@@ -29,3 +29,4 @@ router.put('/:id', protect, authorize('admin'), updateDestination);
 router.delete('/:id', protect, authorize('admin'), deleteDestination);
 
 export default router;
+
