@@ -40,8 +40,9 @@ app.use(cookieParser());
 // Static folder for uploaded files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// Mount API routes
+// Mount API routes — support both /api and /api/v1 prefixes for backward compatibility
 app.use('/api', routes);
+app.use('/api/v1', routes);
 
 // Base route test
 app.get('/', (req, res) => {
