@@ -37,38 +37,6 @@ export const ExplorePage = () => {
   }, [keywordParam]);
 
   // Fetch destinations when searchParams change
-  useEffect(() => {
-    const fetchDestinations = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const params = {
-          keyword: keywordParam,
-          category: categoryParam,
-          district: districtParam,
-          sort: sortParam,
-          page: pageParam,
-          limit: 9,
-        };
-        if (isHiddenGemParam) {
-          params.isHiddenGem = 'true';
-        }
-
-        const data = await destinationService.getAll(params);
-        setDestinations(data.destinations || []);
-        if (data.pagination) {
-          setPagination(data.pagination);
-        }
-      } catch (err) {
-        console.error('Error fetching destinations:', err.message);
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDestinations();
-  }, [searchParams]);
 
   // Update query params helper
   const updateFilter = (updates) => {
@@ -173,9 +141,8 @@ export const ExplorePage = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Left Filter Sidebar */}
         <aside
-          className={`md:block ${
-            showMobileFilter ? 'block' : 'hidden'
-          } md:col-span-1 space-y-6 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none border md:border-none border-stone-200`}
+          className={`md:block ${showMobileFilter ? 'block' : 'hidden'
+            } md:col-span-1 space-y-6 bg-white md:bg-transparent p-6 md:p-0 rounded-2xl md:rounded-none border md:border-none border-stone-200`}
         >
           {/* Active filter reset */}
           {hasActiveFilters && (
@@ -223,11 +190,10 @@ export const ExplorePage = () => {
               <button
                 type="button"
                 onClick={() => updateFilter({ category: null })}
-                className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
-                  !categoryParam
+                className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${!categoryParam
                     ? 'bg-forest-800 text-white'
                     : 'text-stone-700 hover:bg-stone-100'
-                }`}
+                  }`}
               >
                 All Categories
               </button>
@@ -236,11 +202,10 @@ export const ExplorePage = () => {
                   key={cat.id}
                   type="button"
                   onClick={() => updateFilter({ category: cat.id })}
-                  className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center justify-between ${
-                    categoryParam === cat.id
+                  className={`w-full text-left px-3 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center justify-between ${categoryParam === cat.id
                       ? 'bg-forest-800 text-white'
                       : 'text-stone-700 hover:bg-stone-100'
-                  }`}
+                    }`}
                 >
                   <span className="truncate">{cat.name}</span>
                 </button>
@@ -338,11 +303,10 @@ export const ExplorePage = () => {
                           key={p}
                           type="button"
                           onClick={() => updateFilter({ page: p })}
-                          className={`w-9 h-9 rounded-xl text-xs font-bold transition-colors ${
-                            p === pagination.page
+                          className={`w-9 h-9 rounded-xl text-xs font-bold transition-colors ${p === pagination.page
                               ? 'bg-forest-800 text-white'
                               : 'bg-white border border-stone-200 text-stone-700 hover:bg-stone-50'
-                          }`}
+                            }`}
                         >
                           {p}
                         </button>
