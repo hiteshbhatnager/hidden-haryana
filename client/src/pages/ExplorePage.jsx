@@ -37,6 +37,38 @@ export const ExplorePage = () => {
   }, [keywordParam]);
 
   // Fetch destinations when searchParams change
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const params = {
+          keyword: keywordParam,
+          category: categoryParam,
+          district: districtParam,
+          sort: sortParam,
+          page: pageParam,
+          limit: 9,
+        };
+        if (isHiddenGemParam) {
+          params.isHiddenGem = 'true';
+        }
+
+        const data = await destinationService.getAll(params);
+        setDestinations(data.destinations || []);
+        if (data.pagination) {
+          setPagination(data.pagination);
+        }
+      } catch (err) {
+        console.error('Error fetching destinations:', err.message);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDestinations();
+  }, [searchParams]);
 
   // Update query params helper
   const updateFilter = (updates) => {
